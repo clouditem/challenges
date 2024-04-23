@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternating Display / Tabs</title>
+    <link rel="stylesheet" href="../static/pico.css">
+    <link rel="stylesheet" href="../static/test_styles.css">
+    <style>
+        .rightward_flex {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: stretch;
+            align-items: stretch;
+        }
+
+        [role="button"] {
+            flex-grow: 1;
+        }
+
+        .downward_flex {
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+        }
+
+        .center {
+            height: 100%;
+        }
+
+        /*---------- put your css here ----------*/
+    </style>
+</head>
+
+<body>
+    <div class=downward_flex>
+        <div class=rightward_flex>
+            <div role=button>1</div>
+            <div role=button>2</div>
+            <div role=button>3</div>
+        </div>
+        <div class=center>
+            <div>when 1 is clicked, then only this text is shown</div>
+            <div>when 2 is clicked, then only this text is shown</div>
+            <div>when 3 is clicked, then only this text is shown</div>
+            <div>when neither 1 nor 2 nor 3 have been clicked yet, then only this text is shown</div>
+        </div>
+    </div>
+
+    <div>
+        <div>Hint: you will need to modify the HTML, and have a good look at the CSS selector reference. there are 2
+            distinct solutions</div>
+        <div>Bonus challenge: find the second solution. One of them allows you to undo a click by using the browser back
+            button, the other doesn't</div>
+    </div>
+
+
+</body>
+
+</html>
