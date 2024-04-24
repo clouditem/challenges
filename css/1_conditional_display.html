@@ -8,20 +8,62 @@
     <link rel="stylesheet" href="../static/pico.css">
     <link rel="stylesheet" href="../static/test_styles.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #button {
+            background-color: #148df8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #button:hover {
+            background-color: #45a049;
+        }
+
+        #element {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
     </style>
 </head>
 
 <body>
-    <div>
-        On every click on
-        <div role="button">this</div>
-        the following Element shall become invisible if it was visible and visible if it was invisible:
-        <div>This text is toggled by clicking the button above</div>
+    <div class="container">
+        <div id="button" role="button">Change</div>
+        <div id="element">This text is toggled by clicking the button above</div>
     </div>
-    branch test
-    <div>Hint: you will need to modify the HTML, and have a good look at the CSS selector reference</div>
+    <script>
+        const button = document.getElementById('button');
+        const element = document.getElementById('element');
 
-
+        button.addEventListener('click', function () {
+            if (element.style.display === 'none') {
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
