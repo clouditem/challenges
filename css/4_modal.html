@@ -2,34 +2,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modal</title>
-    <link rel="stylesheet" href="../static/pico.css">
-    <link rel="stylesheet" href="../static/test_styles.css">
-    <style>
-        /*---------- put your css here ----------*/
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal</title>
+  <link rel="stylesheet" href="../static/pico.css">
+  <link rel="stylesheet" href="../static/test_styles.css">
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ccc;
+      z-index: 9999;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input[type="checkbox"]:checked+.modal {
+      display: block;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 9998;
+    }
+
+    input[type="checkbox"]:checked+.modal+.overlay {
+      display: block;
+    }
+
+    .modal img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: hsl(185deg 40% 40%);
+    }
+
+    .container {
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-    <div>
-        When you click on
-        <label role="button">this</label>,
-        a Modal pops up that shows the following content:
-        <div>
-            <img src="https://picsum.photos/400" alt="some image">
-            Content to show
-        </div>
-        Clicking anywhere outside of the Modal-Box should close the Modal
-    </div>
+  <div class="container">
+    <h1>
+      Click the button to see some nice pictures!
+    </h1>
+    <label for="modalCheckbox" role="button">SHOW</label>
+  </div>
 
-    <div>
-        <div>Hint: you will need to modify the HTML. The modal should probably use a styling like {position:fixed;inset:10%;}</div>
-        <div>Bonus challenge: darken the area outside of the modal while its open.</div>
-    </div>
+  <input type="checkbox" id="modalCheckbox">
 
+  <div class="modal">
+    <label for="modalCheckbox">[ X ]</label>
+    <img src="https://picsum.photos/400" alt="some image">
+  </div>
 
+  <div class="overlay" id="overlay"></div>
 </body>
 
 </html>

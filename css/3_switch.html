@@ -2,41 +2,80 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Switch</title>
-    <link rel="stylesheet" href="../static/pico.css">
-    <link rel="stylesheet" href="../static/test_styles.css">
-    <style>
-        /*---------- put your css here ----------*/
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch</title>
+  <link rel="stylesheet" href="../static/pico.css">
+  <link rel="stylesheet" href="../static/test_styles.css">
+  <style>
+    .switch {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 10px 0;
+    }
+
+    .switch img {
+      vertical-align: middle;
+      margin-right: 50px;
+      display: none;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .switch span {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    .switch input[type="checkbox"] {
+      display: none;
+    }
+
+    .switch input[type="checkbox"]+span:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 10px;
+    }
+
+    .switch input[type="checkbox"]+span:after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+
+    .switch input[type="checkbox"]:checked+span:before {
+      background-color: red;
+    }
+
+    .switch input[type="checkbox"]:checked+span:after {
+      transform: translateX(20px);
+    }
+
+    .switch input[type="checkbox"]:checked+span+img {
+      display: inline-block;
+    }
+  </style>
 </head>
 
 <body>
-    <div>
-        <div class="switch">
-            <img src="https://picsum.photos/50" alt="some image">
-            <span>When you click on a switch</span>
-        </div>
-        <div class="switch">
-            <img src="https://picsum.photos/50" alt="some image">
-            <span>its background color changes to red</span>
-        </div>
-        <div class="switch">
-            <img src="https://picsum.photos/50" alt="some image">
-            <span>and the image is shown to the right</span>
-        </div>
-        <div class="switch">
-            <img src="https://picsum.photos/50" alt="some image">
-            <span>clicking it again reverts the behaviour</span>
-        </div>
-    </div>
-
-    <div>
-        <div>Hint: you will need to modify the HTML, and have a good look at the CSS selector reference</div>
-        <div>Bonus challenge: style them to look like switches</div>
-    </div>
-
+  <div>
+    <label class="switch">
+      <input type="checkbox">
+      <span>Switch to see the picture</span>
+      <img src="https://picsum.photos/50" alt="some image">
+    </label>
+  </div>
 
 </body>
 

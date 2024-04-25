@@ -1,6 +1,6 @@
 
 /**
- * Creates a deep copy of a simple object
+ * Create a deep copy of a simple object
  * @param {any} object_to_copy
  * @returns {any}
  */
@@ -16,7 +16,6 @@ require('../util/_typescript_test')({
       value = copied_value;
       copied_value = value;
       /**@type {'SOME OTHER RANDOM VALUE'} */
-      //@ts-expect-error
       let some_other_value = copied_value;
       some_other_value;
   }

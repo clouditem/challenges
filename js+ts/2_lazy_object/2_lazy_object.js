@@ -5,7 +5,13 @@
  * @returns {any}
  */
 const lazy_object = (object_with_functions) => {
-
+  return new Proxy({}, {
+    get: function (target, prop) {
+      if (prop in object_with_functions) {
+        return object_with_functions[prop]();
+      }
+    }
+  });
 };
 
 require('../util/_typescript_test')({
@@ -26,23 +32,22 @@ require('../util/_typescript_test')({
       foo: () => 1,
       bar: () => '',
     })
-    //@ts-expect-error
     have = {};
 
   }
 })
 
 require('../util/_test')({
-  return_is_result_of_function_call: (t) => t.deepStrictEqual(lazy_object({ foo: () => 'test' }).foo,'test'),
+  return_is_result_of_function_call: (t) => t.deepStrictEqual(lazy_object({ foo: () => 'test' }).foo, 'test'),
   result_is_enumerable: (t) => t.deepStrictEqual(lazy_object({ foo: () => 'test' }), { foo: 'test' }),
   function_is_only_called_when_value_is_accessed: (t) => {
-    const have= lazy_object({fail: ()=>{throw Error('Should not be called early')}});
+    const have = lazy_object({ fail: () => { throw Error('Should not be called early') } });
     let error;
-    try{
+    try {
       have.fail;
-    }catch(err){
-      error=err;
+    } catch (err) {
+      error = err;
     }
-    return t.strictEqual(error?.message,'Should not be called early');
+    return t.strictEqual(error?.message, 'Should not be called early');
   },
 })

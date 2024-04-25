@@ -16,6 +16,14 @@
       align-items: stretch;
     }
 
+    .rightward_flex a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: white;
+      text-decoration: none;
+    }
+
     [role="button"] {
       flex-grow: 1;
       cursor: pointer;
@@ -30,10 +38,30 @@
       height: 80vh;
     }
 
+    .center {
+      height: 100%;
+    }
+
     .content {
       height: 100%;
       display: none;
       margin-top: 20px;
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
+
+    .content:target {
+      display: block;
+      opacity: 1;
+    }
+
+    .content:target~.default.content {
+      display: none;
+    }
+
+    .default.content {
+      display: block;
+      opacity: 1;
     }
 
     h1 {
@@ -47,33 +75,24 @@
 <body>
   <div class=downward_flex>
     <h1>Click buttons to see related contents!</h1>
-    <div class=rightward_flex>
-      <div role=button>1</div>
-      <div role=button>2</div>
-      <div role=button>3</div>
+    <div class="rightward_flex">
+      <div role="button"><a href="#content1">1</a></div>
+      <div role="button"><a href="#content2">2</a></div>
+      <div role="button"><a href="#content3">3</a></div>
     </div>
-    <div class=center>
+
+    <div class="center">
       <div class="content" id="content1">when 1 is clicked, then only this text is shown</div>
       <div class="content" id="content2">when 2 is clicked, then only this text is shown</div>
       <div class="content" id="content3">when 3 is clicked, then only this text is shown</div>
-      <div class="content" id="defaultContent">when neither 1 nor 2 nor 3 have been clicked yet, then only this
-        text is shown</div>
+      <div class="default content" id="defaultContent">when neither 1 nor 2 nor 3 have been clicked yet, then only
+        this text is shown</div>
     </div>
+  </div>
 
-    <!-- <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          document.getElementById('defaultContent').classList.add('active');
-      });
-
-      function showContent(id) {
-          var contents = document.querySelectorAll('.content');
-          contents.forEach(function (content) {
-              content.classList.remove('active');
-          });
-
-          document.getElementById('content' + id).classList.add('active');
-      }
-  </script> -->
 </body>
 
 </html>
+
+
+
