@@ -1,0 +1,26 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.stylelint": "explicit"
+    },
+    "editor.snippetSuggestions": "inline",
+    "editor.acceptSuggestionOnEnter": "on",
+    "javascript.updateImportsOnFileMove.enabled":  "never",
+    "javascript.suggest.autoImports" :false,
+    "js/ts.implicitProjectConfig.checkJs":true,
+    "editor.formatOnPaste": false,
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "typescript.tsserver.maxTsServerMemory": 4096,
+    "sync.gist": "26db0248cdbf95f75ead9de9495b9b9c",
+    "sync.autoDownload": true,
+    "sync.autoUpload": false,
+    "sync.quietSync": false,
+    "sync.removeExtensions": true,
+    "sync.syncExtensions": true,
+    "html.format.indentHandlebars": true,
+    "html.format.templating": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.tabCompletion": "on",
+    "html.customData": ["./.vscode/html.html-data.json"]
+}
