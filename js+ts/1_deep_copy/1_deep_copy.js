@@ -7,7 +7,6 @@
 const deep_copy = (object_to_copy) => {
 
 };
-require('../util/_test')
 
 require('../util/_typescript_test')({
   not_any_return:()=>{
@@ -23,7 +22,7 @@ require('../util/_typescript_test')({
   }
 })
 
-require('./_test')({
+require('../util/_test')({
   string: (t) => t.strictEqual(deep_copy(" "), " "),
   number: (t) => t.strictEqual(deep_copy(5), 5),
   not_identical: (t) => { const val = {}; t.notStrictEqual(deep_copy(val), val) },
