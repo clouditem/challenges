@@ -1,4 +1,4 @@
-# Lazy Object
+# Await Object
 
 This one is extremly hard and not suited as a third challenge, but i dont have more right now
 you may use //@ts-expect-error inside your code, but you may not modify the tests

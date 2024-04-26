@@ -1,4 +1,6 @@
 /**
+ * create an Object in which all Promise properties are replaced by their resolved values. 
+ * any failed promise fails the entire function
  * @param {any} object
  * @returns {Promise<any>}
  */
