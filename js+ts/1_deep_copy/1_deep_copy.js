@@ -5,19 +5,29 @@
  * @returns {any}
  */
 const deep_copy = (object_to_copy) => {
+  if (typeof object_to_copy !== 'object' || object_to_copy === null) {
+    return object_to_copy;
+  }
+  const copied_object = {};
+  for (const prop in object_to_copy) {
+    if (Object.prototype.hasOwnProperty.call(object_to_copy, prop)) {
+      copied_object[prop] = deep_copy(object_to_copy[prop]);
+    }
+  }
+  return copied_object;
 
 };
 
 require('../util/_typescript_test')({
-  not_any_return:()=>{
-      /**@type {'SOME RANDOM VALUE'} */
-      let value = 'SOME RANDOM VALUE';
-      let copied_value = deep_copy(value);
-      value = copied_value;
-      copied_value = value;
-      /**@type {'SOME OTHER RANDOM VALUE'} */
-      let some_other_value = copied_value;
-      some_other_value;
+  not_any_return: () => {
+    /**@type {'SOME RANDOM VALUE'} */
+    let value = 'SOME RANDOM VALUE';
+    let copied_value = deep_copy(value);
+    value = copied_value;
+    copied_value = value;
+    /**@type {'SOME OTHER RANDOM VALUE'} */
+    let some_other_value = copied_value;
+    some_other_value;
   }
 })
 
@@ -25,6 +35,6 @@ require('../util/_test')({
   string: (t) => t.strictEqual(deep_copy(" "), " "),
   number: (t) => t.strictEqual(deep_copy(5), 5),
   not_identical: (t) => { const val = {}; t.notStrictEqual(deep_copy(val), val) },
-  depth_1: (t) => t.deepStrictEqual(deep_copy({ foo: 'bar',baz:'bam' }), { foo: 'bar',baz:'bam' }),
+  depth_1: (t) => t.deepStrictEqual(deep_copy({ foo: 'bar', baz: 'bam' }), { foo: 'bar', baz: 'bam' }),
   deep: (t) => t.deepStrictEqual(deep_copy({ depth: { 1: { 2: { 3: { 4: { 5: false } } } } } }), { depth: { 1: { 2: { 3: { 4: { 5: false } } } } } }),
 })
