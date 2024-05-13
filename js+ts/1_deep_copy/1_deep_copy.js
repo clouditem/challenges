@@ -2,19 +2,14 @@
 /**
  * Create a deep copy of a simple object
  * @param {any} object_to_copy
- * @returns {any} 
+ * @returns {any}
  */
 const deep_copy = (object_to_copy) => {
   if (typeof object_to_copy !== 'object' || object_to_copy === null) {
     return object_to_copy;
   }
-  const copied_object = {};
-  for (const key in object_to_copy) {
-    if (Object.prototype.hasOwnProperty.call(object_to_copy, key)) {
-      copied_object[key] = deep_copy(object_to_copy[key]);
-    }
-  }
-  return copied_object;
+
+
 };
 
 require('../util/_typescript_test')({
