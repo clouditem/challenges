@@ -4,10 +4,7 @@
  * @param {any} object_with_functions
  * @returns {any}
  */
-
-
 const lazy_object = (object_with_functions) => {
-  /*
   return new Proxy({}, {
     get: function (target, prop) {
       if (prop in object_with_functions) {
@@ -15,9 +12,7 @@ const lazy_object = (object_with_functions) => {
       }
     }
   });
-  */
 };
-
 
 require('../util/_typescript_test')({
   correctly_typed: () => {
